@@ -4,9 +4,10 @@ const app = express();
 const htpp = require('http').Server(app);
 const io = require('socket.io')(htpp, {
     cors: {
-        origin: 'http://localhost:4200',
-        methods: ['GET', 'POST'],
-        
+        origin: "http://localhost:4200",
+        allowedHeaders: ["my-custom-header"],
+        credentials: true
+
     }
 })
 app.use(cors());
@@ -20,7 +21,7 @@ io.on('connection', (socket) => {
 
 app.get('/', (request, response) => {
     response.status(200).json('Bienvenido a la API.')
-  })
+})
 htpp.listen(4000, () => {
     console.log(`Listening in http://localhost:4000`);
 });
