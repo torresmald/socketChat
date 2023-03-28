@@ -10,7 +10,7 @@ const io = require('socket.io')(htpp, {
         
     }
 })
-app.use(cors({ origin: 'http://localhost:4200', credentials: true }));
+app.use(cors());
 io.on('connection', (socket) => {
     console.log('Nuevo usuario Conectado');
     socket.on('sendMessage', (messageInfo) => {
