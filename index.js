@@ -3,12 +3,10 @@ const cors = require('cors');
 const app = express();
 const htpp = require('http').Server(app);
 const io = require('socket.io')(htpp, {
-    cors: {
-        origin: "http://localhost:4200",
-        allowedHeaders: ["my-custom-header"],
-        credentials: true
-
-    }
+    allowRequest: (req, callback) => {
+        const noOriginHeader = req.headers.origin === undefined;
+        callback(null, noOriginHeader); // only allow requests without 'origin' header
+      }
 })
 app.use(cors());
 io.on('connection', (socket) => {
