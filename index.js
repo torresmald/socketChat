@@ -4,7 +4,7 @@ const app = express();
 const htpp = require('http').Server(app);
 const io = require('socket.io')(htpp, {
     cors: {
-        origin: '*',
+        origin: 'http://localhost:4200',
         credentials: true,
         methods: ['GET', 'POST'],
         
