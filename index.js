@@ -18,7 +18,9 @@ io.on('connection', (socket) => {
 })
 
 
-
+app.get('/', (request, response) => {
+    response.status(200).json('Bienvenido a la API.')
+  })
 htpp.listen(4000, () => {
     console.log(`Listening in http://localhost:4000`);
 });
