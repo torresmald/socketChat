@@ -6,10 +6,11 @@ const io = require('socket.io')(htpp, {
     cors: {
         origin: 'http://localhost:4200',
         credentials: true,
-        methods: ['GET', 'POST']
+        methods: ['GET', 'POST'],
+        
     }
 })
-app.use(cors());
+app.use(cors({ origin: 'http://localhost:4200', credentials: true }));
 io.on('connection', (socket) => {
     console.log('Nuevo usuario Conectado');
     socket.on('sendMessage', (messageInfo) => {
