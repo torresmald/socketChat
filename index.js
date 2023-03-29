@@ -3,11 +3,11 @@ const cors = require('cors');
 const app = express();
 const htpp = require('http').Server(app);
 const io = require('socket.io')(htpp, {
-    cors: {
-        origins: ["http://localhost:4200"],
-        credentials: true
+    // cors: {
+    //     origins: ["http://localhost:4200"],
+    //     credentials: true
 
-    }
+    // }
 })
 // app.use(cors());
 io.on('connection', (socket) => {
