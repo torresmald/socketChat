@@ -6,18 +6,9 @@ const htpp = require('http').Server(app);
 const PORT = process.env.PORT || 4000;
 const io = require('socket.io')(htpp, {
     cors: {
-        origins: ["http://localhost:4200"],
-        credentials: true,
-        allowedHeaders: ["my-custom-header"],
-    handlePreflightRequest: (req, res) => {
-        res.writeHead(200, {
-            "Access-Control-Allow-Origin": "http://localhost:4200",
-            "Access-Control-Allow-Methods": "GET, POST",
-            "Access-Control-Allow-Headers": "my-custom-header",
-            "Access-Control-Allow-Credentials": true,
-        });
-        res.end();
-    }}
+        origin: ["http://localhost:4200"],
+        
+   }
 });
 
 app.use(cors());
