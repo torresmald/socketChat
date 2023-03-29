@@ -3,12 +3,13 @@ const cors = require('cors');
 const app = express();
 const htpp = require('http').Server(app);
 const io = require('socket.io')(htpp, {
-    allowRequest: (req, callback) => {
-        const noOriginHeader = req.headers.origin === undefined;
-        callback(null, noOriginHeader); // only allow requests without 'origin' header
-      }
+    cors: {
+        origins: ["http://localhost:4200"],
+        credentials: true
+
+    }
 })
-app.use(cors());
+// app.use(cors());
 io.on('connection', (socket) => {
     console.log('Nuevo usuario Conectado');
     socket.on('sendMessage', (messageInfo) => {
