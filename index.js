@@ -7,7 +7,9 @@ const PORT = process.env.PORT || 4000;
 const io = require('socket.io')(htpp, {
     cors: {
         origins: ["http://localhost:4200"],
-        credentials: true
+        credentials: true,
+        allowedHeaders: ["my-custom-header"],
+
 
     }
 })
